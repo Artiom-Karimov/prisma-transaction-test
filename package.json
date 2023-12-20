@@ -29,7 +29,11 @@
     "ts-node": "^10.9.2",
     "typescript": "^5.1.6"
   },
-  "dependencies": {},
+  "dependencies": {
+    "@prisma/client": "^5.7.1",
+    "prisma": "^5.7.1",
+    "random-word-slugs": "^0.1.7"
+  },
   "jest": {
     "moduleFileExtensions": [
       "js",
