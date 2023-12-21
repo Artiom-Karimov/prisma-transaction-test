@@ -1,6 +1,11 @@
 import { PrismaClient } from '@prisma/client';
 import { manyAnimals, logTimeRange } from './utils';
 
+/* 
+  These cases test prisma transaction behavior with Promise.all.
+  These are always ~30% faster than sequential awaits because of 
+  async/await overhead.
+*/
 describe('Test prisma transactions with Promise.all', () => {
   let client: PrismaClient;
 

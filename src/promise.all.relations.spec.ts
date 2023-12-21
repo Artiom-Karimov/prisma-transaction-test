@@ -1,6 +1,11 @@
 import { PrismaClient } from '@prisma/client';
 import { manyAnimals, manySkills, oneAnimal, oneSkill } from './utils';
 
+/*
+  This case proves stability of Promise.all:
+  Inside of a transaction, Promise.all behaves as 
+  a synchronous ooperation, but always faster than multiple awaits
+ */
 describe('Test relation operations with Promise.all', () => {
   let client: PrismaClient;
 
