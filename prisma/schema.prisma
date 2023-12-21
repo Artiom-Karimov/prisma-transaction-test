@@ -14,4 +14,14 @@ model Animal {
   id        Int     @id @default(autoincrement())
   slug      String  @db.VarChar(200)
   age       Int     @db.Integer @default(0)
+
+  skills    Skill[]
+}
+
+model Skill {
+  id        Int     @id @default(autoincrement())
+  name      String  @db.VarChar(30)
+
+  animalId  Int
+  animal    Animal  @relation(fields: [animalId], references: [id], onDelete: Restrict)
 }

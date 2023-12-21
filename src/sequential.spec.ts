@@ -1,5 +1,5 @@
 import { PrismaClient } from '@prisma/client';
-import { generateMany, logTimeRange } from './utils';
+import { manyAnimals, logTimeRange } from './utils';
 
 describe('Test prisma transactions with sequential await', () => {
   let client: PrismaClient;
@@ -7,11 +7,12 @@ describe('Test prisma transactions with sequential await', () => {
   beforeAll(async () => {
     client = new PrismaClient();
     await client.$connect();
+    await client.skill.deleteMany();
     await client.animal.deleteMany();
   });
 
   it('Create 1000 animals (sequential await)', async () => {
-    const animals = generateMany(1000);
+    const animals = manyAnimals(1000);
 
     const start = new Date();
 
